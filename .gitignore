@@ -1,2 +1,2 @@
-# 忽略amazon_data这个目录
-input
+# 忽略文件
+processed_data
