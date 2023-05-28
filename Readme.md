@@ -6,11 +6,14 @@ KNN: [KNN](https://www.kaggle.com/code/nishankbhola/knn-amazon-sentimental-analy
 
 逻辑回归(更新)： [逻辑回归](https://www.kaggle.com/code/meetnagadia/sentiment-analysis-on-amazon-kindle)
 
-LSTM+GRU: [LSTM+GRU](https://www.kaggle.com/code/dijiswiki/lstm-gru-sentiment-analysis-on-amazon-review)
+LSTM+GRU(不是首选推荐,就参考即可): [LSTM+GRU](https://www.kaggle.com/code/dijiswiki/lstm-gru-sentiment-analysis-on-amazon-review)
 
 Bag of Words（词袋技术） and TF-IDF  [SentimentAnalysis | Kaggle](https://www.kaggle.com/code/aravindanr22052001/sentimentanalysis)
 
-word2vec使用参考：[word2vec使用参考](https://www.kaggle.com/code/ayanmaity/amazon-reviews-sentiment-analysis)
+因为我们已经进行向量化了，所以不需要使用pytorch.embedding，上面LSTM参考文章里面使用了这个技术，我们直接调用相应的模型即可。
+BOW 和IF-TDF 参考：https://stackoverflow.com/questions/76119942/how-to-use-tfidf-matrix-in-lstm-in-pytorch
+word2vec 参考: https://stackoverflow.com/questions/49710537/pytorch-gensim-how-do-i-load-pre-trained-word-embeddings/49802495#49802495
+word2vec核心就是将自己已经处理好的数据作为权重直接作为到embedding 层即可，pytorch中RNN的必须要有pytorch.embedding层作为其他RNN训练的基础，关键在于只要拟合好embedding层即可，维度为 batch_size * 一个句子的长度 * 每个句子每个位置的词向量
 
 # 系统架构
 
@@ -66,9 +69,17 @@ word2vec 使用细节：一直可以参考到切分数据集结束
 
 使用的评价指标为：召回率、F1及ROC曲线。都要有图表展现
 
+BOW 和 IDF 只能使用在传统机器学习算法中，深度学习算法只能使用word2vec。
+
+黄加宇来负责写word2vec的部分，用于神经网络.
 
 # TODO任务：
 
 数据预处理：
-- [ ] 任务一_简单数据预处理
-- [ ] 任务二_三种技术完成单词向量化(word2vec可以留给我完成)
+- [x] 任务一_简单数据预处理
+- [x] 任务二_三种技术完成单词向量化(word2vec可以留给我完成)
+
+模型训练：
+- [ ] 任务一_逻辑回归
+- [ ] 任务二_K近邻算法KNN
+- [ ] 任务三_深度学习算法LSTM
